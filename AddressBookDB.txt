@@ -163,3 +163,19 @@ mysql> SELECT state,COUNT(state) as count from addressBook group by state;
 | Karnataka   |     1 |
 +-------------+-------+
 3 rows in set (0.00 sec)
+
+# UC-8
+
+mysql> SELECT firstName,lastName from addressBook ORDER BY city;
++-----------+----------+
+| firstName | lastName |
++-----------+----------+
+| Mayur     | Kadam    |
+| Akash     | Awaskar  |
+| Deepak    | Patil    |
+| Gaurav    | Naikwade |
+| Prasad    | Kale     |
+| Omkar     | Kamle    |
+| Vishal    | Birajdar |
++-----------+----------+
+7 rows in set (0.00 sec)
