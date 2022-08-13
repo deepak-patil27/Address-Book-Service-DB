@@ -45,3 +45,21 @@ mysql> DESCRIBE addressbook;
 | email       | varchar(50)  | NO   |     | NULL    |       |
 +-------------+--------------+------+-----+---------+-------+
 8 rows in set (0.29 sec)
+
+# UC-3
+
+mysql> INSERT INTO addressbook (firstName,lastName,address,city,state,zip,phoneNumber,email) VALUES('Deepak','Patil','AdarshColony','Latur','Maharashtra','413512','7709653653','deepak27@gmail.com'),('Omkar','Kamle','Kothrude','Pune','Maharashtra','411048','9865321047','omkara555@gmail.com'),('Prasad','Kale','LaxmiColony','Dharashiv','Maharashtra','456321','9874563210','prasadkale@gmail.com'),('Gaurav','Naikwade','Cidco','Sambhajinagar','Maharashtra','452631','9512364780','gaurav63@gmail.com'),('Vishal','Birajdar','Sawewadi','Solapur','Maharashtra','415263','9632541870','vishaldh96@gmail.com');
+Query OK, 5 rows affected (0.70 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+--------------+---------------+-------------+--------+-------------+----------------------+
+| firstName | lastName | address      | city          | state       | zip    | phoneNumber | email                |
++-----------+----------+--------------+---------------+-------------+--------+-------------+----------------------+
+| Deepak    | Patil    | AdarshColony | Latur         | Maharashtra | 413512 | 7709653653  | deepak27@gmail.com   |
+| Gaurav    | Naikwade | Cidco        | Sambhajinagar | Maharashtra | 452631 | 9512364780  | gaurav63@gmail.com   |
+| Omkar     | Kamle    | Kothrude     | Pune          | Maharashtra | 411048 | 9865321047  | omkara555@gmail.com  |
+| Prasad    | Kale     | LaxmiColony  | Dharashiv     | Maharashtra | 456321 | 9874563210  | prasadkale@gmail.com |
+| Vishal    | Birajdar | Sawewadi     | Solapur       | Maharashtra | 415263 | 9632541870  | vishaldh96@gmail.com |
++-----------+----------+--------------+---------------+-------------+--------+-------------+----------------------+
+5 rows in set (0.03 sec)
