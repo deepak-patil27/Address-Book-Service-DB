@@ -363,3 +363,46 @@ mysql> desc contacts_relation;
 | type      | varchar(20) | YES  | MUL | NULL    |       |
 +-----------+-------------+------+-----+---------+-------+
 2 rows in set (0.00 sec)
+
+# UC-13
+
+mysql> select count(contacts.firstname) from contacts,contacts_address,address where contacts.firstname = contacts_address.firstname and contacts_address.zip = address.zip and address.state = 'Telangana';
++---------------------------+
+| count(contacts.firstname) |
++---------------------------+
+|                         0 |
++---------------------------+
+1 row in set (0.13 sec)
+
+mysql> select count(contacts.firstname) from contacts,contacts_address,address where contacts.firstname = contacts_address.firstname and contacts_address.zip = address.zip and address.state = 'Karnataka';
++---------------------------+
+| count(contacts.firstname) |
++---------------------------+
+|                         0 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(contacts.firstname) from contacts,contacts_address,address where contacts.firstname = contacts_address.firstname and contacts_address.zip = address.zip and address.state = 'Maharashtra';
++---------------------------+
+| count(contacts.firstname) |
++---------------------------+
+|                         0 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(contacts.firstname) from contacts,contacts_address,address where contacts.firstname = contacts_address.firstname and contacts_address.zip = address.zip and address.state = 'Maharashtra';
++---------------------------+
+| count(contacts.firstname) |
++---------------------------+
+|                         0 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select type, Count(firstName) from contacts_relation group by type;
++----------+------------------+
+| type     | Count(firstName) |
++----------+------------------+
+| Chemist  |                2 |
+| Engineer |                1 |
++----------+------------------+
+2 rows in set (0.00 sec)
