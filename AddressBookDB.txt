@@ -179,3 +179,67 @@ mysql> SELECT firstName,lastName from addressBook ORDER BY city;
 | Vishal    | Birajdar |
 +-----------+----------+
 7 rows in set (0.00 sec)
+
+# UC-9
+
+mysql> alter table addressBook add type varchar(15) after lastName;
+Query OK, 0 rows affected (3.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc addressbook;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| firstName   | varchar(20)  | NO   | PRI | NULL    |       |
+| lastName    | varchar(20)  | NO   |     | NULL    |       |
+| type        | varchar(15)  | YES  |     | NULL    |       |
+| address     | varchar(100) | NO   |     | NULL    |       |
+| city        | varchar(30)  | NO   |     | NULL    |       |
+| state       | varchar(30)  | NO   |     | NULL    |       |
+| zip         | varchar(10)  | NO   |     | NULL    |       |
+| phoneNumber | varchar(20)  | NO   |     | NULL    |       |
+| email       | varchar(50)  | NO   |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+9 rows in set (0.32 sec)
+
+mysql> update addressBook set type = 'Family' where firstName ='Deepak';
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressBook set type = 'Artist' where firstName ='Gaurav';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressBook set type = 'Teacher' where firstName ='Omkar';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressBook set type = 'Chemist' where firstName ='Prasad';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressBook set type = 'Chemist' where firstName ='Mayur';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressBook set type = 'Contractor' where firstName ='Vishal';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressBook set type = 'Engineer' where firstName ='Akash';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+------------+--------------+----------+-------------+--------+-------------+-----------------------+
+| firstName | lastName | type       | address      | city     | state       | zip    | phoneNumber | email                 |
++-----------+----------+------------+--------------+----------+-------------+--------+-------------+-----------------------+
+| Akash     | Awaskar  | Engineer   | Hi-TechCity  | Hydrabad | Telangana   | 632541 | 9666906969  | akkiawaskar@gmail.com |
+| Deepak    | Patil    | Family     | AdarshColony | Latur    | Maharashtra | 413512 | 7709653653  | deepak27@gmail.com    |
+| Gaurav    | Naikwade | Artist     | Seawoods     | Mmbai    | Maharashtra | 452631 | 9512364780  | gaurav63@gmail.com    |
+| Mayur     | Kadam    | Chemist    | WhiteField   | Banglore | Karnataka   | 560001 | 953621470   | mayurkadam@gmail.com  |
+| Omkar     | Kamle    | Teacher    | Kothrude     | Pune     | Maharashtra | 411048 | 9865321047  | omkara555@gmail.com   |
+| Prasad    | Kale     | Chemist    | LaxmiColony  | Mumbai   | Maharashtra | 456321 | 9874563210  | prasadkale@gmail.com  |
+| Vishal    | Birajdar | Contractor | Sawewadi     | Solapur  | Maharashtra | 415263 | 9632541870  | vishaldh96@gmail.com  |
++-----------+----------+------------+--------------+----------+-------------+--------+-------------+-----------------------+
+7 rows in set (0.00 sec)
