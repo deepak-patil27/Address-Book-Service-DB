@@ -299,3 +299,67 @@ mysql> select * from addressBook;
 | Vishal    | Birajdar | Contractor | Sawewadi     | Solapur  | Maharashtra | 415263 | 9632541870  | vishaldh96@gmail.com  |
 +-----------+----------+------------+--------------+----------+-------------+--------+-------------+-----------------------+
 8 rows in set (0.00 sec)
+
+# UC-12
+
+mysql> CREATE TABLE  contacts(firstName varchar(50) NOT NULL, lastName varchar(50) NOT NULL,phoneNumber varchar(20) NOT NULL,email varchar(50) NOT NULL, PRIMARY KEY(firstName));
+Query OK, 0 rows affected (2.25 sec)
+
+mysql> desc contacts;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| firstName   | varchar(50) | NO   | PRI | NULL    |       |
+| lastName    | varchar(50) | NO   |     | NULL    |       |
+| phoneNumber | varchar(20) | NO   |     | NULL    |       |
+| email       | varchar(50) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.25 sec)
+
+mysql> create table address(zip varchar(10) not null,city varchar(50) not null,state varchar(50) not null,primary key(zip));
+Query OK, 0 rows affected (0.33 sec)
+
+mysql> desc address;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| zip   | varchar(10) | NO   | PRI | NULL    |       |
+| city  | varchar(50) | NO   |     | NULL    |       |
+| state | varchar(50) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.05 sec)
+
+mysql> create table contacts_address(firstName varchar(20) not null,zip varchar(6) not null,foreign key (firstname) references contacts(firstname),foreign key (zip) references address(zip));
+Query OK, 0 rows affected (0.52 sec)
+
+mysql> desc contacts_address;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| firstName | varchar(20) | NO   | MUL | NULL    |       |
+| zip       | varchar(6)  | NO   | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table relations (type varchar(20),primary key(type));
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> describe relations;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| type  | varchar(20) | NO   | PRI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> create table contacts_relation(firstname varchar(20) not null,type varchar(20),foreign key(firstname) references contacts(firstname),foreign key(type) references relations(type));
+Query OK, 0 rows affected (0.49 sec)
+
+mysql> desc contacts_relation;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| firstname | varchar(20) | NO   | MUL | NULL    |       |
+| type      | varchar(20) | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
